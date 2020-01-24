@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [randomArr, setRandomArr] = useState([]);
+
+  const generateRandomArray = () => {
+    setRandomArr(
+      Array(50)
+        .fill()
+        .map(number => Math.floor(Math.random() * 100) + 1)
+    );
+  };
+
+  useEffect(() => {
+    generateRandomArray();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Algorithm visualizer</h1>
+      {randomArr.map((number, index) => (
+        <div key={index}>{number}</div>
+      ))}
     </div>
   );
-}
+};
 
 export default App;
