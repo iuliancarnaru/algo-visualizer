@@ -9,19 +9,53 @@ const App = () => {
     setRandomArr(
       Array(50)
         .fill()
-        .map(number => Math.floor(Math.random() * 100) + 1)
+        .map(() => Math.floor(Math.random() * 100) + 1)
     );
   };
 
-  const bubbleSort = () => {
-    console.log(`bubble sort`);
+  const bubbleSort = arr => {
+    const swap = (arr, idx1, idx2) => {
+      [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+    };
+    let noSwaps;
+    for (let i = arr.length; i > 0; i--) {
+      noSwaps = true;
+      for (let j = 0; j < i - 1; j++) {
+        swap(arr, j, j + 1);
+        noSwaps = false;
+      }
+      if (noSwaps) break;
+    }
+    return arr;
   };
-  const selectionSort = () => {
-    console.log(`selection sort`);
+  const selectionSort = arr => {
+    const swap = (arr, idx1, idx2) => {
+      [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+    };
+
+    for (let i = 0; i < arr.length; i++) {
+      let lowest = i;
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[j] < arr[lowest]) {
+          lowest = j;
+        }
+      }
+      if (i !== lowest) swap(arr, i, lowest);
+    }
+    return arr;
   };
-  const insertionSort = () => {
-    console.log(`insertion sort`);
+
+  const insertionSort = arr => {
+    for (let i = 1; i < arr.length; i++) {
+      let currentVal = arr[i];
+      for (let j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+        arr[j + 1] = arr[j];
+      }
+      arr[j + 1] = currentVal;
+    }
+    return arr;
   };
+
   const mergeSort = () => {
     console.log(`merge sort`);
   };
