@@ -57,7 +57,6 @@ const App = () => {
   };
 
   // mergeSort is splitted in 2 (merge and mergeSort called recursively)
-
   const merge = (arr1, arr2) => {
     let result = [];
 
@@ -97,9 +96,37 @@ const App = () => {
     return merge(left, right);
   };
 
-  const quickSort = () => {
-    console.log(`quick sort`);
+  // quicksort is splitted in 2 (pivot, quickSort)
+  const pivot = (arr, start = 0, end = arr.length - 1) => {
+    const swap = (arr, idx1, idx2) => {
+      [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+    };
+
+    let pivot = arr[start];
+    let swapIdx = start;
+    for (let i = start + 1; i < arr.length; i++) {
+      if (pivot > arr[i]) {
+        swapIdx++;
+        swap(arr, swapIdx, i);
+      }
+    }
+
+    swap(arr, start, swapIdx);
+    return swapIdx;
   };
+
+  const quickSort = (arr, left = 0, right = arr.length - 1) => {
+    if (left < right) {
+      let pivotIdx = pivot(arr, left, right);
+      // left
+      quickSort(arr, left, pivotIdx - 1);
+
+      // right
+      quickSort(arr, pivotIdx + 1, right);
+    }
+    return arr;
+  };
+
   const radixSort = () => {
     console.log(`radix sort`);
   };
