@@ -20,10 +20,10 @@ class DoublyLinkedList {
       this.tail = newNode;
     } else {
       this.tail.next = newNode;
-      this.prev = this.tail;
+      newNode.prev = this.tail;
       this.tail = newNode;
-      this.length++;
     }
+    this.length++;
     return this;
   }
 }
