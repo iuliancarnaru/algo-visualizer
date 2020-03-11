@@ -145,10 +145,4 @@ class SinglyLinkedList {
   }
 }
 
-let list = new SinglyLinkedList();
-
-list.push("Hi");
-list.push("you");
-list.pop();
-list.push("awesome");
-list.shift();
+// let list = new SinglyLinkedList();
