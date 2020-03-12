@@ -1,3 +1,4 @@
+// Stack is LIFO (last in first out)
 // with arrays [push -> pop] or [shift -> unshift] (push/pop more performable)
 // singly linked list implementation
 
