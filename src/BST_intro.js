@@ -69,7 +69,8 @@ class BinarySearchTree {
       return data;
     }
 
-    DFS() {
+    // pre-order
+    DFSPreOrder() {
       let data = [];
       // you can choose a different starting point in the tree
       let current = this.root;
@@ -81,6 +82,19 @@ class BinarySearchTree {
       traverse(current);
       return data;
     }
+
+    // post-order
+    DFSPostOrder() {
+      let data = [];
+      function traverse(node) {
+        if (node.left) traverse(node.left);
+        if (node.right) traverse(node.right);
+        data.push(node.value);
+      }
+      traverse(this.root);
+      return data;
+    }
+    // in-order
 }
 
 // let tree = new BinarySearchTree();
