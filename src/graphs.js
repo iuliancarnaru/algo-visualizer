@@ -42,6 +42,26 @@ class Graph {
       );
     }
   }
+
+  DFSRecursive(startingVertex) {
+    const result = [];
+    const visited = {};
+    const adjacencyList = this.adjacencyList;
+
+    function dfs(vertex) {
+      if (!vertex) return null;
+      visited[vertex] = true;
+      result.push(vertex);
+      adjacencyList[vertex].forEach(neighbour => {
+        if (!visited[neighbour]) {
+          return dfs(neighbour);
+        }
+      });
+    }
+
+    dfs(startingVertex);
+    return result;
+  }
 }
 
 const g = new Graph();
