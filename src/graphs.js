@@ -90,6 +90,7 @@ class Graph {
     const visited = {};
     let currentVertex;
 
+    visited[startingVertex] = true;
     while (queue.length) {
       currentVertex = queue.shift();
       result.push(currentVertex);
