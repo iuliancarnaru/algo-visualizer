@@ -52,14 +52,35 @@ class Graph {
       if (!vertex) return null;
       visited[vertex] = true;
       result.push(vertex);
-      adjacencyList[vertex].forEach(neighbour => {
-        if (!visited[neighbour]) {
-          return dfs(neighbour);
+      adjacencyList[vertex].forEach(neighbor => {
+        if (!visited[neighbor]) {
+          return dfs(neighbor);
         }
       });
     }
 
     dfs(startingVertex);
+    return result;
+  }
+
+  DFSIterative(startingVertex) {
+    const stack = [startingVertex];
+    const result = [];
+    const visited = {};
+    let currentVertex;
+
+    visited[startingVertex] = true;
+    while (stack.length) {
+      currentVertex = stack.pop();
+      result.push(currentVertex);
+      this.adjacencyList[currentVertex].forEach(neighbor => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          stack.push(neighbor)
+        }
+      })
+    }
+
     return result;
   }
 }
