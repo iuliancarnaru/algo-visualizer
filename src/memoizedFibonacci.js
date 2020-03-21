@@ -13,5 +13,16 @@ function memoizedFib2(n, memo = [undefined, 1 , 1]) {
   return res;
 }
 
+// tabulated version (bottom up approach)
+function memoizedFib3(n) {
+  if (n <= 2) return 1;
+  let fibNums = [0, 1, 1];
+  for (let i = 3; i <= n; i++) {
+    fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+  }
+  return fibNums[n];
+}
+
 memoizedFib(45);
 memoizedFib2(50);
+memoizedFib3(55);
